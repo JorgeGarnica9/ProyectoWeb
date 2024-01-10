@@ -17,3 +17,7 @@ Los hipervínculos son todos funcionales a excepción del botón SIGN UP y los d
 PYTHON: 3.12.1 64-bit
 DJANGO: 5.0.1
 -----------------------------------------------------------------------
+.-ADMIN:
+------------
+USUARIO: jmgareca
+PASSWORD: Coder123
