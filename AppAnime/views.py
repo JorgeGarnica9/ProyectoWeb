@@ -102,3 +102,23 @@ def agregar_videojuego(request):
     return render(request, 'AppAnime/apiDjango_formGame.html', {'mi_formu3':new_form})
 
 
+#Buscar info en BBDD
+
+def buscar_anime(request):
+    
+
+    return render(request, 'AppAnime/buscarAnime.html')
+
+def resultado_buscarAnime(request):
+    
+    if request.method == 'GET':
+        
+        nombre_pedido=request.GET['nombre']
+        resultadosAnime = Anime.objects.filter(nombre__icontains=nombre_pedido)
+        return render(request, 'AppAnime/buscarAnime.html', {'animes':resultadosAnime})
+    
+    else: return render(request, 'AppAnime/buscarAnime.html')
+        
+        
+    
+    

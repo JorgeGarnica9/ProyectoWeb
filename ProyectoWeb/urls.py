@@ -33,4 +33,8 @@ urlpatterns = [
     path('nuevoAnime/', agregar_anime),
     path('nuevaPeli/', agregar_pelicula),
     path('nuevoJuego/', agregar_videojuego), 
+
+    #URL'S búsqueda de datos
+    path('buscarAnime/', buscar_anime),
+    path('resultados/', resultado_buscarAnime),
 ]
