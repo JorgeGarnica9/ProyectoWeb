@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PreEntrega 3 Garnica, Jorge</title>
-</head>
-<body>
-    <h1>Buscar Anime:</h1>
-    <form action="/resultados/" method="get" >
-    Buscar por nombre: <input type="text" name="nombre">
-    <input type="submit" value="Buscar">
-    </form>
+
+{% extends "AppAnime/paginas.html" %}
+{% load static %}
+{% block titulo %}
+<h1>Buscador de Animes</h1> 
+<form action="/resultados/" method="get" >
+Buscar por nombre: <input type="text" name="nombre">
+<input type="submit" value="Buscar">
+</form>
 {% for x in animes %}
 <p>{{x.nombre}}</p>
 {% endfor %}
-</body>
-</html>
+
+
+{% endblock %}

@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PreEntrega 3 Garnica, Jorge</title>
-</head>
-<body>
-    <h1>Aquí puedes agregar un nuevo videojuego</h1>
-    <form action="/nuevoJuego/" method="post"> {% csrf_token %}
-        {{mi_formu3}}
-    <input type="submit" value="Guardar">
- 
-</form>
-</body>
-</html>
+
+
+{% extends "AppAnime/paginas.html" %}
+{% load static %}
+{% block titulo %}
+<h1>GRACIAS POR SER PARTE!!!!</h1> 
+
+<h1>Aquí puedes agregar un nuevo videojuego</h1>
+<form action="/nuevoJuego/" method="post"> {% csrf_token %}
+    {{mi_formu3}}
+<input type="submit" value="Guardar">
+
+
+{% endblock %}
