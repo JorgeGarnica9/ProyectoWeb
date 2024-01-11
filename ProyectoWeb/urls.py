@@ -17,16 +17,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from AppAnime.views import *
+from AppAnime import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
     path('', incio, name='Inicio'),
+    
+    #URL'S modelos
     path('verAnime/', ver_anime, name='Animes'),
     path('verPelis/', ver_pelis, name='Peliculas'),
     path('verJuegos/', ver_juegos, name='Juegos'),
     
-    
-    
-    #path('nuevoAnime/', agregarAnime),
-    #path('nuevaPelicula/', agregarPelicula), 
+    #URL'S creación de datos
+    path('nuevoAnime/', agregar_anime),
+    path('nuevaPeli/', agregar_pelicula),
+    path('nuevoJuego/', agregar_videojuego), 
 ]

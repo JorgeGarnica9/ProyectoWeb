@@ -1,15 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from AppAnime.models import *
+from AppAnime.forms import *
 
 # Create your views here.
+
+def incio(request):
+    return render (request, 'AppAnime/inicio.html')
+
+
+#Ver temas
+
 def ver_anime(request):
     mis_anime = Anime.objects.all() #obtiene todos los datos de mi tabla Anime
     info = {'animes':mis_anime}
     return render(request, 'AppAnime/anime.html',info)
-
-def incio(request):
-    return render (request, 'AppAnime/inicio.html')
 
 def ver_pelis(request):
     mis_pelis = Anime.objects.all() #obtiene todos los datos de mi tabla Anime
@@ -22,29 +27,78 @@ def ver_juegos(request):
     return render(request, 'AppAnime/gaming.html',info)
 
 
+#Agregar info a BBDD
 
-'''
-def agregarAnime(request):
-    anime1 = Anime(
-        nombre = 'Dragon Ball',
-        traduccion = 'Dragon Ball',
-        año = 1986,
-        caps = 153,
-        creador = 'Akira Toriyama',
-        site = 'Crunchyroll')
-    anime1.save()
+def agregar_anime(request):
     
-    return HttpResponse('Anime agregado correctamente...')
+    if request.method == 'POST':
+        new_form = AnimeFormulario(request.POST)
+        
+        if new_form.is_valid():
+            info = new_form.cleaned_data
+            
+            new_anime = Anime(
+                nombre=info['nombre'],
+                traduccion=info['traduccion'],
+                año=info['año'],
+                caps=info['caps'],
+                creador=info['creador'],
+                site=info['site']
+                )
+            new_anime.save()
 
-def agregarPelicula(request):
-    pelicula = Pelicula(
-        nombre = 'Dragon Ball Z: Chikyū Marugoto Chōkessen',
-        traduccion = 'Dragon Ball Z: La batalla más grande del mundo está por comenzar',
-        año = 1990,
-        duracion = '60 minutos',
-        creador = 'Akira Toriyama',
-        site = 'Crunchyroll')
-    pelicula.save()
+            return render(request, 'AppAnime/inicio.html')
+        
+    else: new_form = AnimeFormulario()
     
-    return HttpResponse('Pelicula agregada correctamente...')
-    '''
+    return render(request, 'AppAnime/apiDjango_formAnime.html', {'mi_formu':new_form})
+
+def agregar_pelicula(request):
+    
+    if request.method == 'POST':
+        new_form = PeliculaFormulario(request.POST)
+        
+        if new_form.is_valid():
+            info = new_form.cleaned_data
+            
+            new_peli = Pelicula(
+                nombre=info['nombre'],
+                traduccion=info['traduccion'],
+                año=info['año'],
+                duracion=info['duracion'],
+                creador=info['creador'],
+                site=info['site']
+                )
+            new_peli.save()
+
+            return render(request, 'AppAnime/inicio.html')
+        
+    else: new_form = PeliculaFormulario()
+    
+    return render(request, 'AppAnime/apiDjango_formPeli.html', {'mi_formu2':new_form})
+
+
+def agregar_videojuego(request):
+    
+    if request.method == 'POST':
+        new_form = VideojuegoFormulario(request.POST)
+        
+        if new_form.is_valid():
+            info = new_form.cleaned_data
+            
+            new_game = Videojuegos(
+                nombre=info['nombre'],
+                traduccion=info['traduccion'],
+                año=info['año'],
+                plataforma=info['plataforma'],
+                creador=info['creador'],
+                )
+            new_game.save()
+
+            return render(request, 'AppAnime/inicio.html')
+        
+    else: new_form = VideojuegoFormulario()
+    
+    return render(request, 'AppAnime/apiDjango_formGame.html', {'mi_formu3':new_form})
+
+
