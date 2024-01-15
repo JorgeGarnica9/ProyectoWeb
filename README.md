@@ -1,5 +1,5 @@
 # ProyectoWeb
-PRE ENTREGA 3 - JORGE GARNICA
+PROYECTO FINAL - JORGE GARNICA
 -----------------------------------------------------------------------
 IMPORTANTE:
 CAMBIAR A LA RAMA MASTER PARA ACCEDER AL REPOSITORIO!!!
