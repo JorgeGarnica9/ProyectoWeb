@@ -17,12 +17,12 @@ def ver_anime(request):
     return render(request, 'AppAnime/anime.html',info)
 
 def ver_pelis(request):
-    mis_pelis = Anime.objects.all() #obtiene todos los datos de mi tabla Anime
+    mis_pelis = Pelicula.objects.all() #obtiene todos los datos de mi tabla Anime
     info = {'pelis':mis_pelis}
     return render(request, 'AppAnime/peliculas.html',info)
 
 def ver_juegos(request):
-    mis_juegos = Anime.objects.all() #obtiene todos los datos de mi tabla Anime
+    mis_juegos = Videojuegos.objects.all() #obtiene todos los datos de mi tabla Anime
     info = {'juegos':mis_juegos}
     return render(request, 'AppAnime/gaming.html',info)
 
@@ -105,7 +105,6 @@ def agregar_videojuego(request):
 #Buscar info en BBDD
 
 def buscar_anime(request):
-    
 
     return render(request, 'AppAnime/buscarAnime.html')
 
@@ -120,5 +119,31 @@ def resultado_buscarAnime(request):
     else: return render(request, 'AppAnime/buscarAnime.html')
         
         
+def buscar_peli(request):
+
+    return render(request, 'AppAnime/buscarPeli.html')
+
+def resultado_buscarPeli(request):
     
+    if request.method == 'GET':
+        
+        nombre_pedido=request.GET['nombre']
+        resultadosPeli = Pelicula.objects.filter(nombre__icontains=nombre_pedido)
+        return render(request, 'AppAnime/buscarPeli.html', {'pelis':resultadosPeli})
     
+    else: return render(request, 'AppAnime/buscarPeli.html')    
+    
+
+def buscar_juego(request):
+
+    return render(request, 'AppAnime/buscarJuego.html')
+
+def resultado_buscarJuego(request):
+    
+    if request.method == 'GET':
+        
+        nombre_pedido=request.GET['nombre']
+        resultadosJuego = Videojuegos.objects.filter(nombre__icontains=nombre_pedido)
+        return render(request, 'AppAnime/buscarJuego.html', {'juegos':resultadosJuego})
+    
+    else: return render(request, 'AppAnime/buscarJuego.html')    

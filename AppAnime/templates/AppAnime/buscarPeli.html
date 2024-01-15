@@ -2,14 +2,14 @@
 {% extends "AppAnime/paginas.html" %}
 {% load static %}
 {% block titulo %}
-<h1>Buscador de Animes</h1> 
-<form action="/resultados/" method="get" >
+<h1>Buscador de Películas</h1> 
+<form action="/resultadosPeli/" method="get" >
 Buscar por nombre: <input type="text" name="nombre">
 <input type="submit" value="Buscar">
 </form>
 <br>
-{% for x in animes %}
-<p>Nombre: {{x.nombre}} // Primera emsión: {{x.año}} // Creador: {{x.creador}}</p>
+{% for x in pelis %}
+<p>Nombre: {{x.nombre}} // Duración: {{x.duracion}} // Creador: {{x.creador}}</p>
 
 {% endfor %}
 

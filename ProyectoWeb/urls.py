@@ -36,5 +36,9 @@ urlpatterns = [
 
     #URL'S búsqueda de datos
     path('buscarAnime/', buscar_anime),
+    path('buscarPeli/', buscar_peli),
+    path('buscarJuego/', buscar_juego),
     path('resultados/', resultado_buscarAnime),
+    path('resultadosPeli/', resultado_buscarPeli),
+    path('resultadosJuego/', resultado_buscarJuego),
 ]

@@ -7,4 +7,16 @@
     <a class="navbar-brand" href="#!">QUIERES SER PARTE? AGREGA UN JUEGO!!</a>
     <a class="btn btn-primary" href="/nuevoJuego/">AGREGAR</a>
 </div>
+<div class="container">
+    <a class="btn btn-primary" href="/buscarJuego/">BUSCAR</a>
+    <a class="navbar-brand" href="#!">BUSCAS ALGO EN PARTICULAR? BUSCA POR NOMBRE!!</a>
+</div>
+{% endblock %}
+{% block contenido %} 
+<p><h2>---LISTADO DE VIDEOJUEGOS:---</h2><ul>
+    {% for x in juegos %}
+    <li>
+    {{x}}
+    </li>
+    {% endfor %}</ul></p>
 {% endblock %}

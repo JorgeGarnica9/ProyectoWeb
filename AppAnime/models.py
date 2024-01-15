@@ -11,7 +11,12 @@ class Anime(models.Model):
     site = models.CharField(max_length = 60)
     
     def __str__(self):
-        return self.nombre
+        return (f'''Nombre original: {self.nombre} - 
+                Traducción: {self.traduccion} - 
+                Primera emisión: {self.año} - 
+                Caítulos: {self.caps} - 
+                Creador: {self.creador} -
+                Dónde ver: {self.site}''')
     
 class Pelicula(models.Model):
     nombre = models.CharField(max_length = 60)
@@ -22,7 +27,12 @@ class Pelicula(models.Model):
     site = models.CharField(max_length = 60)
     
     def __str__(self):
-        return self.nombre
+        return (f'''Nombre original: {self.nombre} - 
+                    Traducción: {self.traduccion} - 
+                    Primera emisión: {self.año} - 
+                    Duración: {self.duracion} - 
+                    Creador: {self.creador} -
+                    Dónde ver: {self.site}''')
 
 class Videojuegos(models.Model):
     nombre = models.CharField(max_length = 60)
@@ -32,5 +42,9 @@ class Videojuegos(models.Model):
     creador = models.CharField(max_length = 60)
     
     def __str__(self):
-        return self.nombre
+        return (f'''Nombre original: {self.nombre} - 
+                    Traducción: {self.traduccion} - 
+                    Año: {self.año} - 
+                    Plataforma: {self.plataforma} - 
+                    Desarrollador: {self.creador}''')
     

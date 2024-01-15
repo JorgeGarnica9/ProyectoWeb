@@ -7,4 +7,17 @@
     <a class="navbar-brand" href="#!">QUIERES SER PARTE? AGREGA UNA PELI!!</a>
     <a class="btn btn-primary" href="/nuevaPeli/">AGREGAR</a>
 </div>
+<div class="container">
+    <a class="btn btn-primary" href="/buscarPeli/">BUSCAR</a>
+    <a class="navbar-brand" href="#!">BUSCAS ALGO EN PARTICULAR? BUSCA POR NOMBRE!!</a>
+</div>
+{% endblock %}
+
+{% block contenido %} 
+<p><h2>---LISTADO DE PELÍCULAS:---</h2><ul>
+{% for x in pelis %}
+<li>
+{{x}}
+</li>
+{% endfor %}</ul></p>
 {% endblock %}
