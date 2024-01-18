@@ -7,7 +7,9 @@
 
 <h1>Aquí puedes agregar una nueva película de Anime</h1>
 <form action="/nuevaPeli/" method="post"> {% csrf_token %}
-    {{mi_formu2}}
+    <table>
+    {{mi_formu2.as_table}}
+</table>
 <input type="submit" value="Guardar">
 
 

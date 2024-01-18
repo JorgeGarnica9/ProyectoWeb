@@ -1,0 +1,14 @@
+{% extends "AppAnime/paginas.html" %}
+{% load static %}
+
+{% block titulo %}
+login page
+<h2>
+<form action="" method="POST"> {% csrf_token %}
+{{formu}}
+<input type="submit" value="iniciar sesion">
+</form></h2>
+{% endblock %}
+{% block contenido %}
+
+{% endblock %}

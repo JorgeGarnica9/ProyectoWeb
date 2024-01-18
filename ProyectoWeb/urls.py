@@ -24,6 +24,9 @@ urlpatterns = [
     
     path('', incio, name='Inicio'),
     
+    #URL'S usuarios
+    path('login/', iniciar_sesion),
+    
     #URL'S modelos
     path('verAnime/', ver_anime, name='Animes'),
     path('verPelis/', ver_pelis, name='Peliculas'),
@@ -41,4 +44,15 @@ urlpatterns = [
     path('resultados/', resultado_buscarAnime),
     path('resultadosPeli/', resultado_buscarPeli),
     path('resultadosJuego/', resultado_buscarJuego),
+    
+    #URL'S actualización de datos
+    path('updateAnime/<nombre_anime>', actualizar_anime),
+    path('updateJuego/<nombre_juego>', actualizar_juego),
+    path('updatePeli/<nombre_peli>', actualizar_peli),
+    
+    #URL'S eliminación de datos
+    path('borrarAnime/<nombre_anime>', eliminar_anime),
+    path('borrarJuego/<nombre_juego>', eliminar_juego),
+    path('borrarPeli/<nombre_peli>', eliminar_peli),
+
 ]

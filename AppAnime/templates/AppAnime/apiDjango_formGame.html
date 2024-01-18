@@ -7,7 +7,9 @@
 
 <h1>Aquí puedes agregar un nuevo videojuego</h1>
 <form action="/nuevoJuego/" method="post"> {% csrf_token %}
-    {{mi_formu3}}
+    <table>
+    {{mi_formu3.as_table}}
+</table>
 <input type="submit" value="Guardar">
 
 
