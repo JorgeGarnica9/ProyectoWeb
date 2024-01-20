@@ -17,7 +17,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from AppAnime.views import *
-from AppAnime import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +25,9 @@ urlpatterns = [
     
     #URL'S usuarios
     path('login/', iniciar_sesion),
+    path('signup/', registro),
+    path('logout/', cerrar_sesion),
+    path('edit/', editar_perfil),
     
     #URL'S modelos
     path('verAnime/', ver_anime, name='Animes'),

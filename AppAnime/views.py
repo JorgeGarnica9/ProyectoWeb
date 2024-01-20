@@ -1,10 +1,11 @@
-from django.shortcuts import render
+
 from AppAnime.models import *
 from AppAnime.forms import *
-from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth import login, authenticate
+
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -12,7 +13,7 @@ def incio(request):
     return render (request, 'AppAnime/inicio.html')
 
 #----------------------------------------------------------------------------------------   
-#                            USERS: REGISTER/LOGIN/LOGOUT
+#                            USERS: REGISTER/LOGIN/LOGOUT/EDIT
 #----------------------------------------------------------------------------------------   
 
 def iniciar_sesion(request):
@@ -26,29 +27,76 @@ def iniciar_sesion(request):
             usuario = info['username']
             contra = info['password']
             
-            user = authenticate(username = usuario, password = contra)
+            usuario_actual = authenticate(username = usuario, password = contra)
             
-            if user is not None:
-                login(request,user)
+            if usuario_actual is not None:
+                login(request, usuario_actual)
                 
                 return render(request, 'AppAnime/inicio.html', {'mensaje':f'Bienvenido {usuario}'})
             
-            else: 
-                return render(request, 'AppAnime/inicio.html', {'mensaje':'Error, datos incorrectos!!'})
-        
-        else:
-            return render(request, 'AppAnime/inicio.html', {'mensaje':'Error, formulario incorrecto!!'})
+        else: 
             
-    formulario = AuthenticationForm()     
+            return render(request, 'AppAnime/inicio.html', {'mensaje':'Error, datos incorrectos!!'})
+        
+    else:
+        formulario = AuthenticationForm()     
     return render(request, 'Registro/login.html', {'formu':formulario})
 
 
+def registro(request):
+    
+    if request.method == 'POST':
+        
+        formulario = RegistrarUsuario(request.POST)
+        
+        if formulario.is_valid():
+            
+            info = formulario.cleaned_data
+
+            usuario = info ['username']
+            
+            formulario.save()
+            
+            return render(request, 'AppAnime/inicio.html', {'mensaje':f'Bienvenido {usuario}'})
+    else:
+        formulario = RegistrarUsuario()
+        
+    return render(request, 'Registro/registrarUsuario.html', {'formu':formulario})
 
 
+def cerrar_sesion(request):
+    logout(request)
+    
+    return render(request, 'Registro/logout.html')
 
+def editar_perfil(request):
+    
+    usuario_actual = request.user
+    
+    if request.method == 'POST':
+    
+        formulario = EditarUsuario(request.POST)
+    
+        if formulario.is_valid():
+        
+            info = formulario.cleaned_data
 
-
-
+            usuario_actual.first_name = info ['first_name']
+            usuario_actual.last_name = info ['last_name']
+            usuario_actual.email = info ['email']
+            
+            usuario_actual.save()
+            
+            return render(request, 'AppAnime/inicio.html', {'mensaje':'Datos de usuario actualizados'})
+    else:
+        formulario = EditarUsuario(initial={
+            'first_name':usuario_actual.first_name,
+            'last_name':usuario_actual.last_name,
+            'email':usuario_actual.email,
+            
+        })
+    
+    return render(request, 'Registro/editarUsuario.html', {'formu':formulario})
 
 
 #----------------------------------------------------------------------------------------   
@@ -98,6 +146,7 @@ def agregar_anime(request):
     
     return render(request, 'AppAnime/apiDjango_formAnime.html', {'mi_formu':new_form})
 
+@login_required
 def agregar_pelicula(request):
     
     if request.method == 'POST':

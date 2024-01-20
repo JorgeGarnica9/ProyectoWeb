@@ -2,12 +2,14 @@
 {% load static %}
 
 {% block titulo %}
-login page
+<h3>
+register page
 
 <form action="" method="POST"> {% csrf_token %}
 {{formu}}
-<input type="submit" value="iniciar sesion">
+<input type="submit" value="Registarse">
 </form>
+</h3>
 {% endblock %}
 {% block contenido %}
 
