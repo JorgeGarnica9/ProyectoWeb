@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from AppAnime.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -56,5 +58,8 @@ urlpatterns = [
     path('borrarAnime/<nombre_anime>', eliminar_anime),
     path('borrarJuego/<nombre_juego>', eliminar_juego),
     path('borrarPeli/<nombre_peli>', eliminar_peli),
+    
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -84,6 +84,7 @@ def editar_perfil(request):
             usuario_actual.first_name = info ['first_name']
             usuario_actual.last_name = info ['last_name']
             usuario_actual.email = info ['email']
+            usuario_actual.set_password(info['password1'])
             
             usuario_actual.save()
             
@@ -140,7 +141,7 @@ def agregar_anime(request):
                 )
             new_anime.save()
 
-            return render(request, 'AppAnime/inicio.html')
+            return render(request, 'AppAnime/success.html')
         
     else: new_form = AnimeFormulario()
     
@@ -165,7 +166,7 @@ def agregar_pelicula(request):
                 )
             new_peli.save()
 
-            return render(request, 'AppAnime/inicio.html')
+            return render(request, 'AppAnime/success.html')
         
     else: new_form = PeliculaFormulario()
     
@@ -189,7 +190,7 @@ def agregar_videojuego(request):
                 )
             new_game.save()
 
-            return render(request, 'AppAnime/inicio.html')
+            return render(request, 'AppAnime/success.html')
         
     else: new_form = VideojuegoFormulario()
     
@@ -360,3 +361,4 @@ def eliminar_peli(request, nombre_peli):
     peli_elegida.delete()
     
     return render(request, 'AppAnime/peliculas.html')
+
