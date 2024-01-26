@@ -119,6 +119,25 @@ def ver_juegos(request):
     info = {'juegos':mis_juegos}
     return render(request, 'AppAnime/gaming.html',info)
 
+
+#----------------------------------------------------------------------------------------   
+#                            VISTAS DEL CREADOR
+#----------------------------------------------------------------------------------------   
+
+
+def acerca_de (request):
+    
+    return render(request, 'AppAnime/acerca.html')
+
+
+def contacto (request):
+    
+    return render(request, 'AppAnime/contacto.html')
+
+def terminos (request):
+    
+    return render(request, 'AppAnime/terminos.html')
+
 #----------------------------------------------------------------------------------------   
 #                            Crear info en BBDD
 #----------------------------------------------------------------------------------------   

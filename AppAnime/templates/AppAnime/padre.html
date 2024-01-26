@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>PreEntrega 3 Garnica, Jorge</title>
+        <title>Proyecto Anime / GARNICA, Jorge</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -18,21 +18,28 @@
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-light bg-light static-top">
+        <nav class="navbar navbar-light bg-light fixed-top">
             <div class="container">
                 <a class="btn btn-secondary" href="{% url 'Inicio' %}">Mi proyecto</a>
                 <a class="btn btn-secondary" href="{% url 'Animes' %}">Animes</a>
                 <a class="btn btn-secondary" href="{% url 'Peliculas' %}">Películas</a>
                 <a class="btn btn-secondary" href="{% url 'Juegos' %}">Juegos</a>
-                {% if user.is_authenticated %}
-                Hola {{user}}
+                {% if user.is_authenticated and user.is_staff %}
+                <h5>Hola {{user.first_name}}</h5>
                 <img src="{{user.avatarimagen_set.last.imagen.url}}" alt="" width="50" height="50">
                 <a class="btn btn-success" href="/logout/">CERRAR SESION</a>
+                <a class="btn btn-success" href="/edit/">EDITAR PERFIL</a>
+                <a class="btn btn-primary" href="/admin/">ADMIN</a>
+                {% elif user.is_authenticated %}
+                <h5>Hola {{user.first_name}}</h5>
+                <img src="{{user.avatarimagen_set.last.imagen.url}}" alt="" width="50" height="50">
+                <a class="btn btn-success" href="/logout/">CERRAR SESION</a>
+                <a class="btn btn-success" href="/edit/">EDITAR PERFIL</a>
                 {% else %}
                 <a class="btn btn-success" href="/login/">INICIAR SESION</a>
                 <a class="btn btn-success" href="/signup/">REGISTRARSE</a>
                 {% endif %}
-                <a class="btn btn-primary" href="/admin/">ADMIN</a>
+                
             </div>
         </nav>
         <!-- Masthead-->
@@ -123,13 +130,11 @@
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                         <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">Acerca de</a></li>
+                            <li class="list-inline-item"><a href="/acerca/">Acerca de</a></li>
                             <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Contacto</a></li>
+                            <li class="list-inline-item"><a href="/contacto/">Contacto</a></li>
                             <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Terminos de uso</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Política de privacidad</a></li>
+                            <li class="list-inline-item"><a href="/terminos/">Terminos de uso</a></li>
                         </ul>
                         <p class="text-muted small mb-4 mb-lg-0">&copy; Projecto Django 2024. Todos los derecho reservados a nombre de Jorge Garnica.</p>
                     </div>

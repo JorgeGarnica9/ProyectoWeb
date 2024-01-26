@@ -1,14 +1,15 @@
 
 {% extends "AppAnime/paginas.html" %}
 {% load static %}
+{% block title %} Actualizar Anime {% endblock %}
 {% block titulo %}
 <h1>GRACIAS POR SER PARTE!!!!</h1> 
 
 <h1>Aquí puedes actualizar una serie Anime ya cargada</h1>
 <form action="" method="post"> {% csrf_token %}
     <table>
-    {{mi_formu.as_table}}
-</table>
+            {{mi_formu.as_table}}
+    </table>
 <input type="submit" value="Actualizar">
 
 

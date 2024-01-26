@@ -60,6 +60,11 @@ urlpatterns = [
     path('borrarPeli/<nombre_peli>', eliminar_peli),
     
 
+    #URL'S del creador
+    path('acerca/', acerca_de),
+    path('contacto/', contacto),
+    path('terminos/', terminos),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

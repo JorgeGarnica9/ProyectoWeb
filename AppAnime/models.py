@@ -15,7 +15,7 @@ class Anime(models.Model):
         return (f'''Nombre original: {self.nombre} - 
                 Traducción: {self.traduccion} - 
                 Primera emisión: {self.año} - 
-                Caítulos: {self.caps} - 
+                Capítulos: {self.caps} - 
                 Creador: {self.creador} -
                 Dónde ver: {self.site}''')
     
