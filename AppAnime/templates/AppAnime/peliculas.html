@@ -2,16 +2,28 @@
 {% load static %}
 {% block title %} Sección de películas {% endblock %}
 {% block titulo %}
-<h1>Mundo Peliculas</h1> 
-<h2>Esta sección está dedicada al anime en formato películas y Ova's</h2>
+<h1>Mundo Películas</h1> 
+<h1>-----------------</h1>
+<h2>Esta sección está dedicada al anime en formato películas y Ova's</h2><br>
 <div class="container">
-    <a class="navbar-brand" href="#!">QUIERES SER PARTE? AGREGA UNA PELI!!</a>
+    <a class="navbar-brand" >QUIERES SER PARTE? AGREGA UNA PELI!!</a>
     <a class="btn btn-primary" href="/nuevaPeli/">AGREGAR</a>
-</div>
+</div><br>
 <div class="container">
     <a class="btn btn-primary" href="/buscarPeli/">BUSCAR</a>
-    <a class="navbar-brand" href="#!">BUSCAS ALGO EN PARTICULAR? BUSCA POR NOMBRE!!</a>
-</div>
+    <a class="navbar-brand" >BUSCAS ALGO EN PARTICULAR? BUSCA POR NOMBRE!!</a>
+</div><br>
+<div class="container">
+    <a class="navbar-brand" >ALGO NO ESTÁ BIEN? EDITA LA PELÍCULA ANIME!!</a>
+    <a class="btn btn-primary" href="/editPeli/">EDITAR</a>
+</div><br>
+    {% if user.is_authenticated and user.is_staff %}
+    <div class="container">
+        <a class="btn btn-primary" href="/erasePeli/">ELIMINAR</a>
+        <a class="navbar-brand" >ELIMINAR EL REGISTRO DE LA BASE DE DATOS</a>
+    </div>
+
+    {% endif %}
 {% endblock %}
 
 {% block contenido %} 
@@ -21,4 +33,12 @@
 {{x}}
 </li>
 {% endfor %}</ul></p>
+{% endblock %}
+
+{% block video %}
+<br>
+<h2>---PELICULA RECOMENDADA DEL MES---</h2>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qWwXc1hdWxI?si=N0BQuX7ySDeOwduT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br><p class="lead mb-0">
+<h2>Yuka Okkotsu obtiene el control de una maldición extremadamente poderosa y acaba inscrito en el Colegio Técnico de Magia Metropolitana de Tokio, donde otros hechiceros deciden ayudarlo a controlar y vigilar su poder.</h2></p>
 {% endblock %}

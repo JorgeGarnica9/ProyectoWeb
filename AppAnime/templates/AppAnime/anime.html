@@ -2,25 +2,46 @@
 {% load static %}
 {% block title %} Sección de anime {% endblock %}
 {% block titulo %}
-<h1>Mundo Anime</h1> 
-<h2>Esta sección está dedicada al anime en formato series</h2>
+<h1>Mundo Anime</h1>
+<h1>-----------------</h1>
+<h2>Esta sección está dedicada al anime en formato series</h2><br>
 
 <div class="container">
-    <a class="navbar-brand" href="#!">QUIERES SER PARTE? AGREGA UNA SERIE ANIME!!</a>
+    <a class="navbar-brand">QUIERES SER PARTE? AGREGA UNA SERIE ANIME!!</a>
     <a class="btn btn-primary" href="/nuevoAnime/">AGREGAR</a>
-</div>
+</div><br>
 <div class="container">
     <a class="btn btn-primary" href="/buscarAnime/">BUSCAR</a>
-    <a class="navbar-brand" href="#!">BUSCAS ALGO EN PARTICULAR? BUSCA POR NOMBRE!!</a>
-</div>
+    <a class="navbar-brand" >BUSCAS ALGO EN PARTICULAR? BUSCA POR NOMBRE!!</a>
+</div><br>
+<div class="container">
+    <a class="navbar-brand" >ALGO NO ESTÁ BIEN? EDITA LA SERIE ANIME!!</a>
+    <a class="btn btn-primary" href="/editAnime/">EDITAR</a>
+</div><br>
+    {% if user.is_authenticated and user.is_staff %}
+    <div class="container">
+        <a class="btn btn-primary" href="/eraseAnime/">ELIMINAR</a>
+        <a class="navbar-brand" >ELIMINAR EL REGISTRO DE LA BASE DE DATOS</a>
+    </div>
+    {% endif %}
+
 
 {% endblock %}
 {% block contenido %} 
 <p><h2>---LISTADO DE ANIMES:---</h2><ul>
-{% for x in animes %}
+{%  for x in animes %}
 <li>
 {{x}}
 </li>
 {% endfor %}</ul></p>
 
+{% endblock %}
+
+{% block video %}
+<br>
+<h2>---ANIME RECOMENDADO DEL MES---</h2>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MCb13lbVGE0?si=Ou3e0sBw-OMY9JnB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                        
+<br><p class="lead mb-0">
+<h2>Esta historia se sitúa en el momento más álgido de la Gran Era de los Piratas, cuando el joven Monkey D. Luffy quiere llegar a ser el Rey de los Piratas y hacerse al fin con un legendario tesoro, el One Piece.</h2></p>
 {% endblock %}

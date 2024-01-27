@@ -1,0 +1,21 @@
+{% extends "AppAnime/paginas.html" %}
+{% load static %}
+{% block title %} Edición de videojuegos {% endblock %}
+{% block titulo %}
+<h1>Editar Videojuego</h1> 
+<h1>-----------------</h1>
+<h2>Selecciona el videojuego al cual quieras editar sus registros</h2><br>
+
+<p><h2>---LISTADO DE VIDEOJUEGOS:---</h2><ul><br>
+    {%  for x in juegos %}
+    <li><h3>
+    {{x.nombre}} -- <a href="{% url 'editarJuego' x.id %}">Editar</a>
+    </h3></li>
+    {% endfor %}</ul></p>
+
+
+{% endblock %}
+{% block contenido %} 
+
+
+{% endblock %}

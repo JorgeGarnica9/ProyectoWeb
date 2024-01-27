@@ -34,6 +34,7 @@
                 <a class="btn btn-primary" href="/admin/">ADMIN</a>
                 {% elif user.is_authenticated %}
                 <h5>Hola {{user.first_name}}</h5>
+                <img src="{{user.avatarimagen_set.last.imagen.url}}" alt="" width="50" height="50">
                 <a class="btn btn-success" href="/logout/">CERRAR SESION</a>
                 <a class="btn btn-success" href="/edit/">EDITAR PERFIL</a>
                 {% else %}
@@ -57,6 +58,21 @@
                 </div>
             </div>
         </header>{% block contenido %} {% endblock %}
+        <!-- Image Showcases-->
+        <section class="showcase">
+            <div class="container-fluid p-0">
+                <div class="row g-0">
+                    {% block video %} {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+
+
+
+
         <!-- Footer-->
         
         <footer class="footer bg-light">

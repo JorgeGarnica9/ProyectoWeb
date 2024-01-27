@@ -3,15 +3,28 @@
 {% block title %} Sección de videojuegos {% endblock %}
 {% block titulo %}
 <h1>Mundo Gamer</h1> 
-<h2>Esta sección está dedicada al anime en formato videojuegos</h2>
+<h1>-----------------</h1>
+<h2>Esta sección está dedicada al anime en formato videojuegos</h2><br>
 <div class="container">
-    <a class="navbar-brand" href="#!">QUIERES SER PARTE? AGREGA UN JUEGO!!</a>
+    <a class="navbar-brand" >QUIERES SER PARTE? AGREGA UN JUEGO!!</a>
     <a class="btn btn-primary" href="/nuevoJuego/">AGREGAR</a>
-</div>
+</div><br>
 <div class="container">
     <a class="btn btn-primary" href="/buscarJuego/">BUSCAR</a>
-    <a class="navbar-brand" href="#!">BUSCAS ALGO EN PARTICULAR? BUSCA POR NOMBRE!!</a>
-</div>
+    <a class="navbar-brand" >BUSCAS ALGO EN PARTICULAR? BUSCA POR NOMBRE!!</a>
+</div><br>
+<div class="container">
+    <a class="navbar-brand" >ALGO NO ESTÁ BIEN? EDITA EL JUEGO!!</a>
+    <a class="btn btn-primary" href="/editJuego/">EDITAR</a>
+</div><br>
+    {% if user.is_authenticated and user.is_staff %}
+    <div class="container">
+        <a class="btn btn-primary" href="/eraseJuego/">ELIMINAR</a>
+        <a class="navbar-brand" >ELIMINAR EL REGISTRO DE LA BASE DE DATOS</a>
+    </div>
+    {% endif %}
+
+
 {% endblock %}
 {% block contenido %} 
 <p><h2>---LISTADO DE VIDEOJUEGOS:---</h2><ul>
@@ -20,4 +33,13 @@
     {{x}}
     </li>
     {% endfor %}</ul></p>
+{% endblock %}
+
+{% block video %}
+<br>
+<h2>---VIDEOJUEGO RECOMENDADO DEL MES---</h2>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HvOuLtErwtw?si=MWx7sQbYdKq8kjdk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br><p class="lead mb-0">
+<h2>Videojuego basado en la popular saga creada por Akira Toriyama, en esta oportunidad llega a teléfonos móviles. Múltiples modos de juego, cientos de personajes y muchas cosas más.
+</h2></p>
 {% endblock %}

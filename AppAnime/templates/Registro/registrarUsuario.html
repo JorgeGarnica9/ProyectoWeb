@@ -1,12 +1,15 @@
 {% extends "AppAnime/paginas.html" %}
 {% load static %}
+{% block title %} Signup {% endblock %}
 
 {% block titulo %}
+<h1>Crear usuario</h1>
+<h1>-----------------</h1>
+<h2>Ingrese tus datos</h2>
+<br>
 <h3>
-register page
-
 <form action="" method="POST"> {% csrf_token %}
-{{formu}}
+{{formu.as_p}}
 <input type="submit" value="Registarse">
 </form>
 </h3>

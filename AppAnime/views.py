@@ -32,7 +32,7 @@ def iniciar_sesion(request):
             if usuario_actual is not None:
                 login(request, usuario_actual)
                 
-                return render(request, 'AppAnime/inicio.html', {'mensaje':f'Bienvenido {usuario}'})
+                return render(request, 'AppAnime/inicio.html', {'mensaje':f'Has iniciado sesión: {usuario}'})
             
         else: 
             
@@ -57,7 +57,7 @@ def registro(request):
             
             formulario.save()
             
-            return render(request, 'AppAnime/inicio.html', {'mensaje':f'Bienvenido {usuario}'})
+            return render(request, 'AppAnime/inicio.html', {'mensaje':f'Hola {usuario}, ya puedes iniciar sesión para continuar!!'})
     else:
         formulario = RegistrarUsuario()
         
@@ -142,6 +142,7 @@ def terminos (request):
 #                            Crear info en BBDD
 #----------------------------------------------------------------------------------------   
 
+@login_required
 def agregar_anime(request):
     
     if request.method == 'POST':
@@ -165,6 +166,7 @@ def agregar_anime(request):
     else: new_form = AnimeFormulario()
     
     return render(request, 'AppAnime/apiDjango_formAnime.html', {'mi_formu':new_form})
+
 
 @login_required
 def agregar_pelicula(request):
@@ -192,6 +194,7 @@ def agregar_pelicula(request):
     return render(request, 'AppAnime/apiDjango_formPeli.html', {'mi_formu2':new_form})
 
 
+@login_required
 def agregar_videojuego(request):
     
     if request.method == 'POST':
@@ -267,9 +270,10 @@ def resultado_buscarJuego(request):
 #                            Actualizar info en BBDD
 #----------------------------------------------------------------------------------------   
 
-def actualizar_anime(request, nombre_anime):
+@login_required
+def actualizar_anime(request, id_anime):
     
-    anime_elegido = Anime.objects.get(nombre=nombre_anime)
+    anime_elegido = Anime.objects.get(id = id_anime)
     
     if request.method == 'POST':
         new_form = AnimeFormulario(request.POST)
@@ -286,7 +290,7 @@ def actualizar_anime(request, nombre_anime):
                 
             anime_elegido.save()
 
-            return render(request, 'AppAnime/inicio.html')
+            return render(request, 'AppAnime/success.html')
         
     else: new_form = AnimeFormulario(initial={
         'nombre':anime_elegido.nombre,
@@ -299,9 +303,10 @@ def actualizar_anime(request, nombre_anime):
     return render(request, 'AppAnime/updateAnime.html', {'mi_formu':new_form})
 
 
-def actualizar_juego(request, nombre_juego):
+@login_required
+def actualizar_juego(request, id_juego):
     
-    juego_elegido = Videojuegos.objects.get(nombre=nombre_juego)
+    juego_elegido = Videojuegos.objects.get(id=id_juego)
     
     if request.method == 'POST':
         new_form = VideojuegoFormulario(request.POST)
@@ -317,7 +322,7 @@ def actualizar_juego(request, nombre_juego):
                 
             juego_elegido.save()
 
-            return render(request, 'AppAnime/inicio.html')
+            return render(request, 'AppAnime/success.html')
         
     else: new_form = VideojuegoFormulario(initial={
         'nombre':juego_elegido.nombre,
@@ -328,9 +333,11 @@ def actualizar_juego(request, nombre_juego):
     
     return render(request, 'AppAnime/updateJuego.html', {'mi_formu':new_form})
 
-def actualizar_peli(request, nombre_peli):
+
+@login_required
+def actualizar_peli(request, id_peli):
     
-    peli_elegida = Pelicula.objects.get(nombre=nombre_peli)
+    peli_elegida = Pelicula.objects.get(id=id_peli)
     
     if request.method == 'POST':
         new_form = PeliculaFormulario(request.POST)
@@ -347,7 +354,7 @@ def actualizar_peli(request, nombre_peli):
                 
             peli_elegida.save()
 
-            return render(request, 'AppAnime/inicio.html')
+            return render(request, 'AppAnime/success.html')
         
     else: new_form = PeliculaFormulario(initial={
         'nombre':peli_elegida.nombre,
@@ -363,21 +370,91 @@ def actualizar_peli(request, nombre_peli):
 #                            Borrar info en BBDD
 #----------------------------------------------------------------------------------------   
 
-def eliminar_anime(request, nombre_anime):
-    anime_elegido = Anime.objects.get(nombre=nombre_anime)
+
+@login_required
+def eliminar_anime(request, id_anime):
+    anime_elegido = Anime.objects.get(id=id_anime)
     anime_elegido.delete()
     
-    return render(request, 'AppAnime/anime.html')
+    return render(request, 'AppAnime/success.html')
 
-def eliminar_juego(request, nombre_juego):
-    juego_elegido = Videojuegos.objects.get(nombre=nombre_juego)
+
+@login_required
+def eliminar_juego(request, id_juego):
+    juego_elegido = Videojuegos.objects.get(id=id_juego)
     juego_elegido.delete()
     
-    return render(request, 'AppAnime/gaming.html')
+    return render(request, 'AppAnime/success.html')
 
-def eliminar_peli(request, nombre_peli):
-    peli_elegida = Pelicula.objects.get(nombre=nombre_peli)
+
+@login_required
+def eliminar_peli(request, id_peli):
+    peli_elegida = Pelicula.objects.get(id=id_peli)
     peli_elegida.delete()
     
-    return render(request, 'AppAnime/peliculas.html')
+    return render(request, 'AppAnime/success.html')
 
+
+#----------------------------------------------------------------------------------------   
+#                            VISTAS DE EDIT / ERASE
+#----------------------------------------------------------------------------------------   
+
+
+@login_required
+def editAnime (request):
+  
+    mis_anime = Anime.objects.all() #obtiene todos los datos de mi tabla Anime
+   
+    info = {'animes':mis_anime}
+    
+    return render(request, 'AppAnime/editAnime.html', info)
+
+
+@login_required
+def eraseAnime (request):
+  
+    mis_anime = Anime.objects.all() #obtiene todos los datos de mi tabla Anime
+   
+    info = {'animes':mis_anime}
+    
+    return render(request, 'AppAnime/eraseAnime.html', info)
+
+
+@login_required
+def editPeli (request):
+  
+    mis_pelis = Pelicula.objects.all() #obtiene todos los datos de mi tabla Peliculas
+   
+    info = {'pelis':mis_pelis}
+    
+    return render(request, 'AppAnime/editPeli.html', info)
+
+
+@login_required
+def erasePeli (request):
+  
+    mis_pelis = Pelicula.objects.all() #obtiene todos los datos de mi tabla Peliculas
+   
+    info = {'pelis':mis_pelis}
+    
+    return render(request, 'AppAnime/erasePeli.html', info)
+
+
+@login_required
+def editJuego (request):
+  
+    mis_juegos = Videojuegos.objects.all() #obtiene todos los datos de mi tabla videojuegos
+   
+    info = {'juegos':mis_juegos}
+    
+    return render(request, 'AppAnime/editJuego.html', info)
+
+
+@login_required
+def eraseJuego (request):
+  
+    mis_juegos = Videojuegos.objects.all() #obtiene todos los datos de mi tabla videojuegos
+   
+    info = {'juegos':mis_juegos}
+    
+    return render(request, 'AppAnime/eraseJuego.html', info)

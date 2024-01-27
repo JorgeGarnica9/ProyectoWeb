@@ -27,9 +27,9 @@ class VideojuegoFormulario(forms.Form):
     creador = forms.CharField(max_length = 60)
     
 class RegistrarUsuario(UserCreationForm):
-    username = forms.CharField(max_length=20, label='Ingrese su nombre de usuario')
-    first_name = forms.CharField(max_length=20, label='Ingrese su nombre')
-    last_name = forms.CharField(max_length=40, label='Ingrese su apellido')
+    username = forms.CharField(max_length=20, label='Nombre de usuario')
+    first_name = forms.CharField(max_length=20, label='Nombre')
+    last_name = forms.CharField(max_length=40, label='Apellido')
     email = forms.EmailField()
     password1 = forms.CharField(min_length=8, max_length=15, label='Ingrese su contraseña', widget=forms.PasswordInput)
     password2 = forms.CharField(min_length=8, max_length=15, label='Repita su contraseña', widget=forms.PasswordInput)

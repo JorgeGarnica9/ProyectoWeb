@@ -3,14 +3,16 @@
 {% load static %}
 {% block title %} Actualizar Videojuego {% endblock %}
 {% block titulo %}
-<h1>GRACIAS POR SER PARTE!!!!</h1> 
-
+<h1>QUIERES CAMBIAR LOS REGISTROS?</h1> 
+<h1>-----------------</h1>
 <h1>Aquí puedes actualizar un videojuego ya cargado</h1>
+<br>
 <form action="" method="post"> {% csrf_token %}
     <table>
-    {{mi_formu.as_table}}
+    {{mi_formu.as_p}}
 </table>
 <input type="submit" value="Actualizar">
 
+<h2>Gracias por ser parte!!</h2>
 
 {% endblock %}

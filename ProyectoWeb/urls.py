@@ -50,20 +50,29 @@ urlpatterns = [
     path('resultadosJuego/', resultado_buscarJuego),
     
     #URL'S actualización de datos
-    path('updateAnime/<nombre_anime>', actualizar_anime),
-    path('updateJuego/<nombre_juego>', actualizar_juego),
-    path('updatePeli/<nombre_peli>', actualizar_peli),
+    path('updateAnime/<id_anime>', actualizar_anime, name='editarAnime'),
+    path('updateJuego/<id_juego>', actualizar_juego, name='editarJuego'),
+    path('updatePeli/<id_peli>', actualizar_peli, name='editarPeli'),
     
     #URL'S eliminación de datos
-    path('borrarAnime/<nombre_anime>', eliminar_anime),
-    path('borrarJuego/<nombre_juego>', eliminar_juego),
-    path('borrarPeli/<nombre_peli>', eliminar_peli),
+    path('borrarAnime/<id_anime>', eliminar_anime, name = 'eliminarAnime'),
+    path('borrarJuego/<id_juego>', eliminar_juego, name='eliminarJuego'),
+    path('borrarPeli/<id_peli>', eliminar_peli, name='eliminarPeli'),
     
-
     #URL'S del creador
     path('acerca/', acerca_de),
     path('contacto/', contacto),
     path('terminos/', terminos),
+    
+    #URL'S de listados para edit/erase
+    path('editAnime/', editAnime),
+    path('eraseAnime/', eraseAnime),
+    path('editPeli/', editPeli),
+    path('erasePeli/', erasePeli),
+    path('editJuego/', editJuego),
+    path('eraseJuego/', eraseJuego),
+    
+
 
 ]
 

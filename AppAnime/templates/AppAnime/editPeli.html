@@ -1,0 +1,21 @@
+{% extends "AppAnime/paginas.html" %}
+{% load static %}
+{% block title %} Edición de animes {% endblock %}
+{% block titulo %}
+<h1>Editar Película</h1> 
+<h1>-----------------</h1>
+<h2>Selecciona la película a la cual quieras editar sus registros</h2><br>
+
+<p><h2>---LISTADO DE PELÍCULAS:---</h2><ul><br>
+    {%  for x in pelis %}
+    <li><h3>
+    {{x.nombre}} -- <a href="{% url 'editarPeli' x.id %}">Editar</a>
+    </h3></li>
+    {% endfor %}</ul></p>
+
+
+{% endblock %}
+{% block contenido %} 
+
+
+{% endblock %}

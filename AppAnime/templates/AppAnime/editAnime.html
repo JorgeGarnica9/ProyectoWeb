@@ -1,0 +1,21 @@
+{% extends "AppAnime/paginas.html" %}
+{% load static %}
+{% block title %} Edición de animes {% endblock %}
+{% block titulo %}
+<h1>Editar Anime</h1> 
+<h1>-----------------</h1>
+<h2>Selecciona la serie a la cual quieras editar sus registros</h2><br>
+
+<p><h2>---LISTADO DE ANIMES:---</h2><ul><br>
+    {%  for x in animes %}
+    <li><h3>
+    {{x.nombre}} -- <a href="{% url 'editarAnime' x.id %}">Editar</a>
+    </h3></li>
+    {% endfor %}</ul></p>
+
+
+{% endblock %}
+{% block contenido %} 
+
+
+{% endblock %}
