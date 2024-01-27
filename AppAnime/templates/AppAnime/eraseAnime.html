@@ -3,13 +3,14 @@
 {% block title %} Eliminación de animes {% endblock %}
 {% block titulo %}
 <h1>Eliminar un Anime de la base de datos</h1> 
+<h1>-----------------</h1>
 <h2>Selecciona la serie a la cual quieras eliminar del registro</h2>
-
-<p><h2>---LISTADO DE ANIMES:---</h2><ul>
+<br>
+<p><h2>---LISTADO DE ANIMES:---</h2><ul><br>
     {%  for x in animes %}
-    <li>
+    <li><h3>
     {{x.nombre}} -- <a href="{% url 'eliminarAnime' x.id %}">Eliminar</a>
-    </li>
+    </h3></li>
     {% endfor %}</ul></p>
 
 

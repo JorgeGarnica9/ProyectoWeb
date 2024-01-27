@@ -32,7 +32,7 @@ def iniciar_sesion(request):
             if usuario_actual is not None:
                 login(request, usuario_actual)
                 
-                return render(request, 'AppAnime/inicio.html', {'mensaje':f'Has iniciado sesión: {usuario}'})
+                return render(request, 'AppAnime/loginCorrecto.html')
             
         else: 
             
@@ -98,6 +98,29 @@ def editar_perfil(request):
         })
     
     return render(request, 'Registro/editarUsuario.html', {'formu':formulario})
+
+
+@login_required
+def agregarImagen(request):
+    
+    if request.method == 'POST':
+        
+        miFormulario = AvatarFormulario(request.POST, request.FILES)
+    
+        if miFormulario.is_valid():    
+                    
+            info = miFormulario.cleaned_data
+            
+            avatar = AvatarImagen(usuario = request.user, imagen = info['imagen'])
+            
+            avatar.save()
+            
+            return render(request, 'AppAnime/success.html')
+    
+    else: 
+        miFormulario = AvatarFormulario()
+        return render(request, 'AppAnime/agregarImg.html', {'form':miFormulario})
+
 
 
 #----------------------------------------------------------------------------------------   

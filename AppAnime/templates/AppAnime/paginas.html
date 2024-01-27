@@ -31,12 +31,14 @@
                 <img src="{{user.avatarimagen_set.last.imagen.url}}" alt="" width="50" height="50">
                 <a class="btn btn-success" href="/logout/">CERRAR SESION</a>
                 <a class="btn btn-success" href="/edit/">EDITAR PERFIL</a>
+                <a class="btn btn-success" href="/agregarImagen/">AVATAR</a>
                 <a class="btn btn-primary" href="/admin/">ADMIN</a>
                 {% elif user.is_authenticated %}
                 <h5>Hola {{user.first_name}}</h5>
                 <img src="{{user.avatarimagen_set.last.imagen.url}}" alt="" width="50" height="50">
                 <a class="btn btn-success" href="/logout/">CERRAR SESION</a>
                 <a class="btn btn-success" href="/edit/">EDITAR PERFIL</a>
+                <a class="btn btn-success" href="/agregarImagen/">AVATAR</a>
                 {% else %}
                 <a class="btn btn-success" href="/login/">INICIAR SESION</a>
                 <a class="btn btn-success" href="/signup/">REGISTRARSE</a>

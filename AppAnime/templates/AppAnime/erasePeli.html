@@ -2,14 +2,15 @@
 {% load static %}
 {% block title %} Eliminación de animes {% endblock %}
 {% block titulo %}
-<h1>Eliminar una Pleícula de la base de datos</h1> 
+<h1>Eliminar una Película de la base de datos</h1> 
+<h1>-----------------</h1>
 <h2>Selecciona la película a la cual quieras eliminar del registro</h2>
-
+<br>
 <p><h2>---LISTADO DE PELÍCULAS:---</h2><ul>
     {%  for x in pelis %}
-    <li>
+    <li><h3>
     {{x.nombre}} -- <a href="{% url 'eliminarPeli' x.id %}">Eliminar</a>
-    </li>
+    </h3></li>
     {% endfor %}</ul></p>
 
 

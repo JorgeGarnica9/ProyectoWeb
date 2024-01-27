@@ -1,0 +1,18 @@
+
+{% extends "AppAnime/paginas.html" %}
+{% load static %}
+{% block title %} Agregar Avatar {% endblock %}
+{% block titulo %}
+<h1>QUIERES AGREGAR UN AVATAR PARA TÍ?</h1> 
+<h1>-----------------</h1>
+<h2>Sube la imágen que deseas para tu avatar.</h2>
+<br>
+<form action="" method="post"  enctype="multipart/form-data"> {% csrf_token %}
+    <table>
+    {{form.as_p}}
+</table>
+<input type="submit" value="Subir imagen">
+
+<h2>-----------------</h2>
+
+{% endblock %}

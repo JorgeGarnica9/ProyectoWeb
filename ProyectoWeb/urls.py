@@ -30,6 +30,8 @@ urlpatterns = [
     path('signup/', registro),
     path('logout/', cerrar_sesion),
     path('edit/', editar_perfil),
+    path('agregarImagen/', agregarImagen, name= 'Subir Avatar'),
+    
     
     #URL'S modelos
     path('verAnime/', ver_anime, name='Animes'),

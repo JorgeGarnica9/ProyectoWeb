@@ -10,7 +10,7 @@ class AnimeFormulario(forms.Form):
     caps = forms.IntegerField()
     creador = forms.CharField(max_length = 60)
     site = forms.CharField(max_length = 60)
-    
+        
 class PeliculaFormulario(forms.Form):
     nombre = forms.CharField(max_length = 60)
     traduccion = forms.CharField (max_length = 70)
@@ -51,3 +51,9 @@ class EditarUsuario(UserCreationForm):
         fields = ['first_name', 'last_name', 'email', 'password1', 'password2']
         
 
+class AvatarFormulario(forms.ModelForm):
+    
+    class Meta:
+        
+        model = AvatarImagen
+        fields =  ['imagen']

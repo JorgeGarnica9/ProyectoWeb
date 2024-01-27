@@ -3,13 +3,14 @@
 {% block title %} Eliminación de juegos {% endblock %}
 {% block titulo %}
 <h1>Eliminar un Videojuego de la base de datos</h1> 
+<h1>-----------------</h1>
 <h2>Selecciona el videojuego al cual quieras eliminar del registro</h2>
-
-<p><h2>---LISTADO DE ANIMES:---</h2><ul>
+<br>
+<p><h2>---LISTADO DE ANIMES:---</h2><ul><br>
     {%  for x in juegos %}
-    <li>
+    <li><h3>
     {{x.nombre}} -- <a href="{% url 'eliminarJuego' x.id %}">Eliminar</a>
-    </li>
+    </h3></li>
     {% endfor %}</ul></p>
 
 
