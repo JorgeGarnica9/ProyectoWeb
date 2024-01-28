@@ -21,7 +21,7 @@ DJANGO: 5.0.1
 --------
 USUARIO: jmgareca PASSWORD: Coder123
 ----------------------------------------
-.-YAPAS:
+.-ADJUNTOS:
 --------
-Le he agregado "cositas" al proyecto, que si bien no afectan a la funcionalidad de la entrega, hacen que se vea un poco más comprometida. Me gustaría que las vean por sí sol@s jajajajaj. Espero les guste!!! PD: Pueden seguirme en redes... ya tienen cómo :P
+VIDEO DEMOSTRATIVO: https://youtu.be/4rsuvB8WWOg
 ----------------------------------------
