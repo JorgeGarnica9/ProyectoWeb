@@ -57,7 +57,7 @@ def registro(request):
             
             formulario.save()
             
-            return render(request, 'AppAnime/success.html')
+            return render(request, 'AppAnime/registroCorrecto.html')
     else:
         formulario = RegistrarUsuario()
         
