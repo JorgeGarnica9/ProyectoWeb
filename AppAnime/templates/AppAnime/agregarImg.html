@@ -3,7 +3,7 @@
 {% load static %}
 {% block title %} Agregar Avatar {% endblock %}
 {% block titulo %}
-<h1>QUIERES AGREGAR UN AVATAR PARA TÍ?</h1> 
+<h1>QUIERES AGREGAR O MODIFICAR TU AVATAR?</h1> 
 <h1>-----------------</h1>
 <h2>Sube la imágen que deseas para tu avatar.</h2>
 <br>
@@ -15,4 +15,12 @@
 
 <h2>-----------------</h2>
 
+{% endblock %}
+
+{% block fondo %} 
+<style>
+    header.masthead {
+        background-image: url("../static/AppAnime/assets/img/avatar.jpg");
+    }
+</style>
 {% endblock %}

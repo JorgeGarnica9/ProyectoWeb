@@ -10,10 +10,18 @@
 <h3>
 <form action="" method="POST"> {% csrf_token %}
 {{formu.as_p}}
-<input type="submit" value="Registarse">
+<input type="submit" value="Registrarse">
 </form>
 </h3>
 {% endblock %}
 {% block contenido %}
 
+{% endblock %}
+
+{% block fondo %} 
+<style>
+    header.masthead {
+        background-image: url("../static/AppAnime/assets/img/forms.avif"); background-size:cover ;
+    }
+</style>
 {% endblock %}

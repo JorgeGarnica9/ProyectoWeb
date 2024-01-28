@@ -1,16 +1,26 @@
 {% extends "AppAnime/paginas.html" %}
 {% load static %}
-
+{% block title %} Editar Usuario  {% endblock %}
 {% block titulo %}
-<h3>
-edit page
+<h1>EDITAR DATOS DEL USUARIO</h1> 
+<h1>-----------------</h1>
+<h2>Aquí puedes actualizar tus datos del registro</h2>
+<br>
 
 <form action="" method="POST"> {% csrf_token %}
-{{formu}}
+{{formu.as_p}}
 <input type="submit" value="actualizar">
 </form>
-</h3>
+
 {% endblock %}
 {% block contenido %}
 
+{% endblock %}
+
+{% block fondo %} 
+<style>
+    header.masthead {
+        background-image: url("../static/AppAnime/assets/img/forms.avif");
+    }
+</style>
 {% endblock %}

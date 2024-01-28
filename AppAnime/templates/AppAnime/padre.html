@@ -15,6 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'AppAnime/css/styles.css' %}" rel="stylesheet" />
+
     </head>
     <body>
         <!-- Navigation-->
@@ -45,13 +46,13 @@
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead">
-            <div class="container position-relative">
+        <header class="masthead"> {% block fondo %} {% endblock %}
+            <div class="container position-relative" >
                 <div class="row justify-content-center">
                     <div class="col-xl-6">
-                        <div class="text-center text-white">{% block welcome %} {% endblock %}
+                        <div class="text-center text-white">
                             <!-- Page heading-->
-                            
+                            {% block mensaje %} {% endblock %}
                             <h1 class="mb-5">{% block titulo %} {% endblock %}</h1>
                         </div>
                     </div>

@@ -10833,7 +10833,7 @@ textarea.form-control-lg {
 header.masthead {
   position: relative;
   background-color: #343a40;
-  background: url("static/AppAnime/assets/img/bg-showcase.jpg") no-repeat center center;
+  background: url("AppAnime/static/assets/img/bg-masthead.jpg") no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;

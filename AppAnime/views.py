@@ -57,18 +57,20 @@ def registro(request):
             
             formulario.save()
             
-            return render(request, 'AppAnime/inicio.html', {'mensaje':f'Hola {usuario}, ya puedes iniciar sesión para continuar!!'})
+            return render(request, 'AppAnime/success.html')
     else:
         formulario = RegistrarUsuario()
         
     return render(request, 'Registro/registrarUsuario.html', {'formu':formulario})
 
-
+@login_required
 def cerrar_sesion(request):
     logout(request)
     
     return render(request, 'Registro/logout.html')
 
+
+@login_required
 def editar_perfil(request):
     
     usuario_actual = request.user
@@ -88,7 +90,7 @@ def editar_perfil(request):
             
             usuario_actual.save()
             
-            return render(request, 'AppAnime/inicio.html', {'mensaje':'Datos de usuario actualizados'})
+            return render(request, 'AppAnime/success.html')
     else:
         formulario = EditarUsuario(initial={
             'first_name':usuario_actual.first_name,

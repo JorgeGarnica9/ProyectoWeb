@@ -1,17 +1,26 @@
 
-
 {% extends "AppAnime/paginas.html" %}
 {% load static %}
 {% block title %} Agregar Videojuego {% endblock %}
 {% block titulo %}
-<h1>GRACIAS POR SER PARTE!!!!</h1> 
-
-<h1>Aquí puedes agregar un nuevo videojuego</h1>
+<h1>QUIERES AGREGAR UN JUEGO?</h1> 
+<h1>-----------------</h1>
+<h2>>Completa los datos para agregar un nuevo videojuego al registro de nuestra base de datos.</h2>
+<br>
 <form action="/nuevoJuego/" method="post"> {% csrf_token %}
     <table>
-    {{mi_formu3.as_table}}
+    {{mi_formu3.as_p}}
 </table>
 <input type="submit" value="Guardar">
 
+<h2>Gracias por ser parte!!</h2>
 
+{% endblock %}
+
+{% block fondo %} 
+<style>
+    header.masthead {
+        background-image: url("../static/AppAnime/assets/img/forms.avif"); background-size:cover ;
+    }
+</style>
 {% endblock %}
